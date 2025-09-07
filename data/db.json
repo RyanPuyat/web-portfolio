@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Barneys Burger",
+      "description": "A straightforward website where customers can browse and order burgers, with integrated payment functionality powered by Stripe.",
+      "image": "https://res.cloudinary.com/dyozmymsf/image/upload/barneys_k544g5.png",
+      "url": "https://barneysburger.vercel.app/",
+      "date": "2025-06-20",
+      "category": "Fullstack",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Timber Halo",
+      "description": "A custom-built application to manage everything about the hotel: bookings, cabins and guests. With built-in messaging functionality ensures seamless communication between staff.",
+      "image": "/images/project-4.png",
+      "url": "https://timber-halo.vercel.app/login",
+      "date": "2025-09-05",
+      "category": "Fullstack",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Diet Dash",
+      "description": "Calorie Tracker helps manage your daily calories. Set a limit, log meals and exercises, and see your intake and expenditure.",
+      "image": "https://res.cloudinary.com/dyozmymsf/image/upload/v1738464486/calorie-mockup_rya1hk.jpg",
+      "url": "https://dietdash.netlify.app/",
+      "date": "2024-12-15",
+      "category": "Frontend",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "EPS-Project",
+      "description": "A fully functional mock examination website featuring practice exercises, designed to assist individuals aiming to work under the Employment Permit System (EPS) in South Korea.",
+      "image": "https://res.cloudinary.com/dyozmymsf/image/upload/v1741079044/epsmockup_gde9ei.jpg",
+      "url": "https://epscorner.onrender.com/index.html",
+      "date": "2024-12-01",
+      "category": "Fullstack",
+      "featured": true
+    }
+  ]
+}

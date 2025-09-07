@@ -3,6 +3,7 @@ import FeaturedProjects from '~/ui/FeaturedProjects';
 import { projectLoader } from '../loader/projectLoader';
 import { useLoaderData } from 'react-router-dom';
 import AboutPreview from '~/ui/AboutPreview';
+// import Spa from '~/ui/ProfileImage';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,6 +21,7 @@ export default function HomePage() {
     <>
       <FeaturedProjects projects={allProjects} count={2} />
       <AboutPreview />
+      {/* <Test /> */}
     </>
   );
 }

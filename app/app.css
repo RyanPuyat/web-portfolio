@@ -26,24 +26,40 @@ body {
 .card-wrapper::before {
   content: '';
   position: absolute;
-  display: block;
-  /* width: 325px;
-    height: 100%; */
-  /* left: 25%;
-    top: 25%; */
+  top: 50%;
+  left: 50%;
+  width: 183px; /* slightly larger than image */
+  height: 183px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(1px) brightness(1.2);
 
-  height: 100%;
-  width: 70%;
-  background: linear-gradient(#00ccff, #d500f9);
-  animation: rotate 10s linear infinite;
+  /* background: conic-gradient(#00ccff, #d500f9, #00ccff);
+   */
+  background: conic-gradient(
+    #d500f9 0deg,
+    #d500f9 60deg,
+    #ffffff 120deg,
+    rgba(255, 255, 255, 0.3) 180deg,
+    transparent 270deg,
+    #d500f9 360deg
+  );
+
+  /* animation: rotate 10s linear infinite;
+   */
+  animation:
+    rotate 6s linear infinite,
+    pulseTail 2s ease-in-out infinite;
+
+  z-index: 0;
 }
 
 @keyframes rotate {
   from {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 

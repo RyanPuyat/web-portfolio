@@ -8,7 +8,7 @@ function AboutPreview() {
         <ProfilePhoto />
       </div>
       <div>
-        <h2 className="text-2xl font-bold text-white mb-2">About Me</h2>
+        <h2 className="text-2xl  text-white mb-2">About Me</h2>
         <p className="text-gray-200 mb-4 max-w 4xl line-clamp-2">
           I’m a web developer based in South Korea who loves bringing ideas to
           life online. I enjoy building websites and apps that look great and

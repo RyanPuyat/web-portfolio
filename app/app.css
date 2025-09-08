@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
 /* @custom-variant dark (&:is(.dark *)); */
 
-@theme {
-  --font-sans:
+/* @theme { */
+/* font-family: 'Inter', sans-serif; */
+/* --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; */
+/* } */
+
+:root {
+  font-family: 'Inter', sans-serif;
 }
 
 html,
@@ -16,6 +22,15 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .card-wrapper {

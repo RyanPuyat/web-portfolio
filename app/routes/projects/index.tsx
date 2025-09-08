@@ -1,3 +1,4 @@
+import type { Route } from './+types';
 import { useLoaderData } from 'react-router-dom';
 import ProjectCard from '~/routes/projects/ProjectCard';
 import Pagination from '~/ui/Pagination';
@@ -6,6 +7,13 @@ import Filter from '~/ui/Filter';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 export const loader = projectLoader;
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'Ryan Puyat | Projects' },
+    { name: 'description', content: 'Just another day!' },
+  ];
+}
 
 export default function ProjectRoutes() {
   const { projects, totalCount, categories, selectedCategory } =
@@ -23,7 +31,7 @@ export default function ProjectRoutes() {
 
   return (
     <section>
-      <h2 className="text-3xl font-bold text-white mb-8">Projects</h2>
+      <h2 className="text-4xl text-white mb-8">Projects</h2>
 
       <Filter
         categories={categories}

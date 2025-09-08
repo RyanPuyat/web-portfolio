@@ -14,7 +14,7 @@ function Navbar({ onToggle, navOpen }: NavbarProps) {
   return (
     <>
       {/* Desktop */}
-      <div className="hidden md:flex items-center gap-10 text-sm">
+      <div className="hidden md:flex items-center gap-10 text-2xl">
         {['/', '/projects', '/blog', '/about', '/contact'].map(
           (path, index) => (
             <NavLink key={index} to={path}>

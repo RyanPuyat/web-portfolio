@@ -1,6 +1,14 @@
+import type { Route } from './+types';
 import IconCloudDemo from '~/ui/TechSphere';
 import TechTagCloud from '~/ui/TagCloud';
 import ProfilePhoto from '~/ui/ProfileImage';
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'Ryan Puyat | About' },
+    { name: 'description', content: 'Just another day!' },
+  ];
+}
 
 export default function AboutPage() {
   return (
@@ -13,9 +21,7 @@ export default function AboutPage() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">
-            Hey, I'm Ryan 👋
-          </h1>
+          <h1 className="text-3xl  text-white mb-2">Hey, I'm Ryan 👋</h1>
           <p className="text-gray-300 text-lg">
             I’m a web developer based in South Korea who loves bringing ideas to
             life online. I enjoy building websites and apps that look great and
@@ -30,7 +36,7 @@ export default function AboutPage() {
 
       {/* Bio Section */}
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold text-white mb-4">My Mission</h2>
+        <h2 className="text-3xl  text-white mb-4">My Mission</h2>
         <p className="text-gray-300 leading-relaxed">
           My mission is to build websites that feel good to use and make life a
           little easier. I love turning ideas into real, working web
@@ -40,7 +46,7 @@ export default function AboutPage() {
           web more useful, more beautiful, and more fun.
         </p>
       </div>
-      <h2 className="text-2xl font-semibold text-white mb-4">🚀 Tech I Use</h2>
+      <h2 className="text-3xl  text-white mb-4">🚀 Tech I Use</h2>
       <div className="my-10">
         <IconCloudDemo />
       </div>

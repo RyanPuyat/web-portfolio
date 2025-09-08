@@ -17,7 +17,7 @@ function FeaturedProjects({ projects, count }: FeaturedProps) {
         Featured Projects
       </h2>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 z-10">
         {featured.map((project) => (
           <ProjectCard key={project.id} projects={project} />
         ))}

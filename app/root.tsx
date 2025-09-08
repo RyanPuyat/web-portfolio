@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import { Toaster } from 'react-hot-toast';
 
 import type { Route } from './+types/root';
 import './app.css';
@@ -43,7 +44,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="overflow-y-scroll ">
         <MainNav />
-        <main>{children}</main>
+        <main>
+          <Toaster position="top-right" reverseOrder={false} />
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

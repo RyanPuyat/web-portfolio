@@ -40,7 +40,7 @@ const ContactForm = () => {
         <div className="gradient-border">
           <button
             type="submit"
-            className="button-submit bg-gradient-to-r from-[#3e1f90] to-[#2c1468] hover:from-[#2c1468] hover:to-[#3e1f90] text-white font-bold py-2 px-4 rounded-2xl transition-colors duration-300 border-1 border-neutral-400 shadow-neutral-700 hover:shadow-lg hover:shadow-[#3e1f90]/60 cursor-pointer glow-effect"
+            className="button-submit px-3 py-2 rounded-md text-sm transition bg-purple-600 text-white hover:bg-purple-700"
           >
             Submit
           </button>

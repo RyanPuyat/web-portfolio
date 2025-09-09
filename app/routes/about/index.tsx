@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-[1300px] mx-auto px-6 py-16 bg-gray-900">
+    <div className="glass max-w-[1300px] mx-auto px-6 py-16 ">
       {/* Intro */}
 
       <div className="flex flex-col xl:flex-row xl:items-start items-center gap-10 mb-12 ">

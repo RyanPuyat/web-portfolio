@@ -22,13 +22,8 @@ function Aurora() {
     });
   }, []);
 
-  const resetColor = () => {
-    color.set(COLORS[0]);
-  };
-
   return {
     color,
-    resetColor,
     backgroundImage,
     border,
     borderBottom,

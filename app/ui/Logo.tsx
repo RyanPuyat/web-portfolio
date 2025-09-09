@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function Logo() {
   // const location = useLocation();
-  const { color, resetColor } = Aurora();
+  // const { color } = Aurora();
 
   // useEffect(() => {
   //   if (location.pathname === '/') {
@@ -19,10 +19,10 @@ function Logo() {
       {/* <span> */}
       <motion.img className="mx-2 h-15 w-15" src="/logo.png" alt="" />
       <motion.div
-        style={{ color }}
+        // style={{ color }}
         className=" absolute -z-10 flex justify-center items-center animate-pulse"
       >
-        <LuHexagon className="w-20 h-20  blur-md " />
+        {/* <LuHexagon className="w-20 h-20  blur-md " /> */}
       </motion.div>
       {/* <img className="mx-2 h-15 w-15" src="/logo.png" alt="" /> */}
       {/* </span> */}

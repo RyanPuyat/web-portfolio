@@ -52,12 +52,12 @@ body {
   /* background: conic-gradient(#00ccff, #d500f9, #00ccff);
    */
   background: conic-gradient(
-    #d500f9 0deg,
-    #d500f9 60deg,
+    #a855f7 0deg,
+    #a855f7 60deg,
     #ffffff 120deg,
     rgba(255, 255, 255, 0.3) 180deg,
     transparent 270deg,
-    #d500f9 360deg
+    #a855f7 360deg
   );
 
   /* animation: rotate 10s linear infinite;

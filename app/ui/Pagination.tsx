@@ -47,7 +47,7 @@ function Pagination({ count }: PaginationProps) {
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition 
+          className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm transition 
             ${
               currentPage === 1
                 ? 'bg-gray-200 text-gray-500 cursor-not-allowed'

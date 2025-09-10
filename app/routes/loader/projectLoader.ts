@@ -3,21 +3,20 @@ import { fetchProjects } from '~/api/projects';
 import { PAGE_SIZE } from '~/utils/constant';
 import type { Project } from '~/api/projects';
 
-// import { useState } from 'react';
-
 export async function projectLoader({ request }: Route.LoaderArgs): Promise<{
   projects: Project[];
-  totalCount: number;
+  // totalCount: number;
   categories: string[];
   selectedCategory: string;
   allProjects: Project[];
+  totalPages: number;
 }> {
   //Pagination
   const url = new URL(request.url);
   const page = Number(url.searchParams.get('page')) || 1;
   const selectedCategory = url.searchParams.get('category') || 'All';
 
-  const { project: allProjects } = await fetchProjects(request);
+  const { project: allProjects } = await fetchProjects();
 
   const categories = [
     'All',
@@ -33,11 +32,14 @@ export async function projectLoader({ request }: Route.LoaderArgs): Promise<{
   const end = start + PAGE_SIZE;
 
   const paginatedProjects = filteredProjects.slice(start, end);
-  console.log(categories);
+  const totalPages = Math.ceil(filteredProjects.length / PAGE_SIZE);
+
+  // console.log(categories);
 
   return {
     projects: paginatedProjects,
-    totalCount: filteredProjects.length,
+    // totalCount: filteredProjects.length,  use this for showing total number of porject items
+    totalPages,
     categories,
     selectedCategory,
     allProjects,

@@ -1,6 +1,6 @@
 import type { Route } from './+types';
 import { useLoaderData } from 'react-router-dom';
-import ProjectCard from '~/routes/projects/ProjectCard';
+import ProjectCard from '~/ui/ProjectCard';
 import Pagination from '~/ui/Pagination';
 import { projectLoader } from '../loader/projectLoader';
 import Filter from '~/ui/Filter';
@@ -16,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function ProjectRoutes() {
-  const { projects, totalCount, categories, selectedCategory } =
+  const { projects, totalPages, categories, selectedCategory } =
     useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
   if (!Array.isArray(projects)) {
@@ -47,7 +47,7 @@ export default function ProjectRoutes() {
           ))}
         </motion.div>
       </AnimatePresence>
-      <Pagination count={totalCount} />
+      <Pagination totalPages={totalPages} />
     </section>
   );
 }

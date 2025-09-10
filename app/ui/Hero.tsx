@@ -17,7 +17,7 @@ const Hero = ({
     hoverShadow,
   } = Aurora();
 
-  const MotionLink = motion(Link);
+  const MotionLink = motion.create(Link);
 
   return (
     <motion.section

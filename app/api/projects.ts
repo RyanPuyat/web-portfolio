@@ -18,9 +18,7 @@ export type ProjectsResponse = {
   totalCount: number;
 };
 
-export async function fetchProjects(
-  request: Request
-): Promise<ProjectsResponse> {
+export async function fetchProjects(): Promise<ProjectsResponse> {
   const res = await fetch(`${API_URL}/projects`);
   const data = await res.json();
   return { project: data, totalCount: data.length };
@@ -31,15 +29,14 @@ export type ProjectsDetailsResponse = {
 };
 
 export async function fetchProjectsDetails({
-  request,
   params,
 }: LoaderFunctionArgs): Promise<ProjectsDetailsResponse> {
-  console.log('Fetching project with ID:', params.id);
+  // console.log('Fetching project with ID:', params.id);
   const res = await fetch(`${API_URL}/projects/${params.id}`);
 
   if (!res.ok) throw new Response('Project not found', { status: 404 });
 
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return { project: data };
 }

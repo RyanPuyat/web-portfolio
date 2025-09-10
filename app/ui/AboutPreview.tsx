@@ -21,7 +21,7 @@ function AboutPreview() {
           to="/about"
           className="inline-block text-purple-400 hover:underline text-sm"
         >
-          Learn More About Me
+          Learn More About Me →
         </Link>
       </div>
     </section>

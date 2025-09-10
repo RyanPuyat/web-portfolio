@@ -1,5 +1,5 @@
 import type { Project } from '~/api/projects';
-import ProjectCard from '~/routes/projects/ProjectCard';
+import ProjectCard from '~/ui/ProjectCard';
 
 type FeaturedProps = {
   projects: Project[];

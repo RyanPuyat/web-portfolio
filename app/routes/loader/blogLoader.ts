@@ -1,14 +1,23 @@
 import type { Route } from '../about/+types';
 import type { PostMeta } from '~/api/blog';
-import { PAGE_SIZE } from '~/utils/constant';
+// import { PAGE_SIZE } from '~/utils/constant';
 
 export async function blogLoader({ request }: Route.LoaderArgs): Promise<{
   posts: PostMeta[];
   // totalPost: number;
   totalPages: number;
+  page: number;
 }> {
-  const url = new URL('/posts-meta.json', request.url);
-  const res = await fetch(url.href);
+  const PAGE = 5;
+  const requestUrl = new URL(request.url);
+  const searchQuery =
+    requestUrl.searchParams.get('search')?.toLowerCase() || '';
+
+  // const url = new URL('/posts-meta.json', request.url);
+  const res = await fetch(new URL('/posts-meta.json', request.url).href);
+  // const searchQuery = url.searchParams.get('search')?.toLowerCase() || '';
+
+  // const res = await fetch(url.href);
 
   if (!res.ok) throw new Error('Failed to fetch data');
 
@@ -26,14 +35,23 @@ export async function blogLoader({ request }: Route.LoaderArgs): Promise<{
   const urlPage = new URL(request.url);
   const page = Number(urlPage.searchParams.get('page')) || 1;
 
-  const totalPages = Math.ceil(data.length / PAGE_SIZE);
-  const start = (page - 1) * PAGE_SIZE;
-  const end = start + PAGE_SIZE;
-  const paginatedPosts = data.slice(start, end);
+  const filtered = searchQuery
+    ? data.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchQuery) ||
+          post.excerpt.toLowerCase().includes(searchQuery)
+      )
+    : data;
+
+  const totalPages = Math.ceil(filtered.length / PAGE);
+  const start = (page - 1) * PAGE;
+  const end = start + PAGE;
+  const paginatedPosts = filtered.slice(start, end);
 
   return {
     posts: paginatedPosts,
     totalPages,
+    page,
     // totalPost: data.length use this for showing total number of posts items
   };
 }

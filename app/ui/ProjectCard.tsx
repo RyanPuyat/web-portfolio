@@ -5,7 +5,7 @@ function ProjectCard({ projects }: { projects: Project }) {
   return (
     <Link
       className="block transform transition duration-300 hover:scale-[1.02]"
-      to={`/projects/${projects.id}`}
+      to={`/projects/${projects.documentId}`}
     >
       <div className="glass h-full  rounded-lg overflow-hidden shadow-sm transition hover:shadow-md">
         <img

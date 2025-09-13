@@ -34,8 +34,6 @@ export async function projectLoader({ request }: Route.LoaderArgs): Promise<{
   const paginatedProjects = filteredProjects.slice(start, end);
   const totalPages = Math.ceil(filteredProjects.length / PAGE_SIZE);
 
-  // console.log(categories);
-
   return {
     projects: paginatedProjects,
     // totalCount: filteredProjects.length,  use this for showing total number of porject items

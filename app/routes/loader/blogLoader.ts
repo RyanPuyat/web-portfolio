@@ -1,10 +1,10 @@
 import type { Route } from '../about/+types';
-import type { PostMeta } from '~/api/blog';
-// import { PAGE_SIZE } from '~/utils/constant';
+import type { PostMeta, StrapiBlog, StrapiResponse } from '~/api/blog';
+import { fetchPosts } from '~/api/blog';
 
 export async function blogLoader({ request }: Route.LoaderArgs): Promise<{
   posts: PostMeta[];
-  // totalPost: number;
+  allPosts: PostMeta[];
   totalPages: number;
   page: number;
 }> {
@@ -13,21 +13,11 @@ export async function blogLoader({ request }: Route.LoaderArgs): Promise<{
   const searchQuery =
     requestUrl.searchParams.get('search')?.toLowerCase() || '';
 
-  // const url = new URL('/posts-meta.json', request.url);
-  const res = await fetch(new URL('/posts-meta.json', request.url).href);
-  // const searchQuery = url.searchParams.get('search')?.toLowerCase() || '';
-
-  // const res = await fetch(url.href);
-
-  if (!res.ok) throw new Error('Failed to fetch data');
-
-  const data = await res.json();
-  //   console.log(data);
+  const { data } = await fetchPosts();
 
   data.sort((a: PostMeta, b: PostMeta) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-
   if (!Array.isArray(data)) {
     throw new Error('Expected an array of post objects');
   }
@@ -51,8 +41,8 @@ export async function blogLoader({ request }: Route.LoaderArgs): Promise<{
   return {
     posts: paginatedPosts,
     totalPages,
+    allPosts: data,
     page,
-    // totalPost: data.length use this for showing total number of posts items
   };
 }
 
@@ -66,28 +56,35 @@ export async function blogDetailsLoader({
   const { slug } = params;
   if (!slug) throw new Response('Missing slug parameter', { status: 400 });
 
-  const url = new URL('/posts-meta.json', request.url);
-  const res = await fetch(url.href);
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/blogs?filters[slug][$eq]=${slug}&populate=*`
+  );
 
-  if (!res.ok) throw new Error('Failed to fetch data');
+  if (!res.ok) throw new Response('Failed to fetch blog post', { status: 500 });
 
-  const index = await res.json();
-  //   console.log(data);
+  const json: StrapiResponse<StrapiBlog> = await res.json();
 
-  if (!Array.isArray(index)) {
+  if (!Array.isArray(json.data) || json.data.length === 0) {
     throw new Error('Expected an array of post objects');
   }
+  const item = json.data[0];
 
-  const postMeta = index.find((post: PostMeta) => post.slug === slug);
-
-  //   console.log(postMeta);
-
-  if (!postMeta) throw new Response('Not found', { status: 404 });
-
-  const markdown = await import(`../../posts/${slug}.md?raw`);
+  const post: PostMeta = {
+    id: item.id,
+    title: item.title,
+    excerpt: item.excerpt,
+    slug: item.slug,
+    body: item.body,
+    image01: item.image01?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image01.url}`
+      : '/images/no-images.png',
+    image02: item.image02?.url
+      ? `${import.meta.env.VITE_STRAPI_URL}${item.image02.url}`
+      : '/images/no-images.png',
+    date: item.date,
+  };
 
   return {
-    postMeta,
-    markdown: markdown.default,
+    post,
   };
 }

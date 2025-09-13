@@ -13,7 +13,7 @@ function PostCard({ post }: { post: PostMeta }) {
           {new Date(post.date).toLocaleDateString()}
         </p>
 
-        <p className="text-gray-300 mb-4">{post.excerpt}</p>
+        <p className="text-gray-300 mb-4 line-clamp-1">{post.excerpt}</p>
         <Link
           to={`/blog/${post.slug}`}
           className="text-purple-300 text-sm hover:underline"

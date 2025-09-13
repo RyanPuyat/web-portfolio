@@ -34,8 +34,8 @@ export default function ({ loaderData }: ComponentProps) {
       <div className="grid gap-8 md:grid-cols-2 items-start">
         <div>
           <img
-            src={project.image}
-            alt={project.title}
+            src={project.image || '/images/no-images.png'}
+            alt={project.title || 'Untitled'}
             className="rounded-lg shadow-md"
           />
         </div>

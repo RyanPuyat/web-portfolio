@@ -11,6 +11,8 @@ function FeaturedProjects({ projects, count }: FeaturedProps) {
     .filter((project) => project.featured)
     .slice(0, count);
 
+  if (featured.length === 0) return null;
+
   return (
     <section>
       <h2 className="text-2xl font-bold mb-6 text-gray200">

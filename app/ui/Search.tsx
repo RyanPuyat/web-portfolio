@@ -20,6 +20,7 @@ function Search({ value, onChange }: SearchProps) {
             font-medium
             shadow-sm
             mb-6
+            w-full
             focus:outline-none focus:ring-2 focus:ring-purple-400"
     />
   );
